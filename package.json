@@ -7,8 +7,8 @@
   "author": "dsx <876337269@qq.com>",
   "license": "MIT",
   "scripts": {
-    "generator": "node  --max_old_space_size=102400 ./scripts/generator.js",
-    "build": "cross-env CTYPE=frontend dumi build",
+    "generator": "node  --max_old_space_size=1024000 ./scripts/generator.js",
+    "build": "cross-env CTYPE=frontend node --max_old_space_size=1024000 node_modules/dumi/bin/dumi.js build",
     "dev": "cross-env CTYPE=frontend dumi dev"
   },
   "devDependencies": {},

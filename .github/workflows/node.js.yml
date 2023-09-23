@@ -33,7 +33,6 @@ jobs:
           ACCESS_TOKEN_DEPLOY: ${{secrets.ACCESS_TOKEN_RSA}}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
-          CNAME: dashixiong.com
         run: |
           chmod +x ./scripts/deploy.sh
           bash ./scripts/deploy.sh
