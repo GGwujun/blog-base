@@ -5,7 +5,6 @@ import { getBookNavs } from "../scripts/navs";
 const isDev = process.env.NODE_ENV === "development";
 const isVercel = process.env.IS_VERCEL;
 
-
 export default defineConfig({
   ...(isDev
     ? {
@@ -16,8 +15,8 @@ export default defineConfig({
       }),
 
   logo: "/logo.png",
-  base: isVercel ? "/" : "/blog",
-  publicPath: isVercel ? "/" : "/blog/",
+  base: isVercel ? "/" : "/blog-base",
+  publicPath: isVercel ? "/" : "/blog-base/",
   favicon: "/logo.png",
   mode: "site",
   title: "大师兄",
@@ -31,7 +30,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: "none",
   },
-  outputPath:'docs',
+  outputPath: "docs",
   exportStatic: {},
   analytics: isDev
     ? false

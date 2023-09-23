@@ -2,18 +2,12 @@ node_modules
 .umi
 .umi-production
 
-docsone
-docszero
-docstwo
-docsthree
-docsfour
-ssrc
-
 .dumi/tmp
 .dumi/tmp-test
 .dumi/tmp-production
+.dumi
 
 
 yarn.lock
-
+ssrc
 public/images
