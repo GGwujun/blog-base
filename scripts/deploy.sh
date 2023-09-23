@@ -21,12 +21,6 @@ fi
 # 进入到build的目录
 cd "${PUBLISH_DIR}" # ./dist
 
-# 为gh-pages 生成CNAME，发现使用别人提供的脚本，生成的竟然是小写的CNAME文件，所以改为小写的，使用脚本写入
-
-# 设置CNAME
-#if [ -n "${CNAME}" ]; then 
-    # echo "${CNAME}">CNAME
-#fi 
 
 # 格式化的输出
 function print_error() {
@@ -55,6 +49,8 @@ if [ -n "${ACCESS_TOKEN_DEPLOY}" ]; then
     remote_repo="git@github.com:${PUBLISH_REPOSITORY}.git"
 fi
 
+echo -e "${remote_repo}"
+
 # 跳过配置personal_token 和 github_token
 remote_branch="${PUBLISH_BRANCH}"
 
@@ -66,7 +62,7 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 
-git remote rm origin || true
+git remote remove origin
 git remote add origin "${remote_repo}"
 
 # 更改时间
