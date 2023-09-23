@@ -10,7 +10,11 @@ let request = require('request')
 
 
 const isDev = process.argv.slice(2) && process.argv.slice(2).includes("DEBUG");
-
+const sleep = function (time) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time)
+  })
+}
 
 const downloadImage = (src, dest) => {
   return new Promise((resolve, reject) => {
@@ -65,11 +69,6 @@ const createDocDir = function (book) {
 
   if (!fs.existsSync('public')) {
     fs.mkdirSync('public');
-  }
-
-  const ImageDoc = 'public/images'
-  if (!fs.existsSync(ImageDoc)) {
-    fs.mkdirSync(ImageDoc);
   }
 };
 
@@ -128,7 +127,6 @@ const createSummary = function (book) {
 
 const createDocs = async function (book) {
   const bookDir = `ssrc/${book.title}`;
-  const imageDir = `public/images`;
   logger.log(chalk.green(`create book: ${book.title}`));
 
   for (let index = 0; index < book.data.length; index++) {
@@ -173,11 +171,14 @@ date: "2019-06-23"
         fs.writeFileSync(`${chapterDir}/${getList(i)}.md`, mdContent);
         if (sitdown.service.mdImages && sitdown.service.mdImages.length) {
           for (let index = 0; index < sitdown.service.mdImages.length; index++) {
-            const img = sitdown.service.mdImages[index];
-            const imgNoOrigin = img.split("?")[0].match(domainPattern);
-            const dest = imgNoOrigin[1].replace(/\./g, "").replace(/\:/g, "").replace(/\//g, "") + imgNoOrigin[2].replace(/\//g, "")
             try {
-              await downloadImage(img, `${chapterDir}/${dest}`)
+              const img = sitdown.service.mdImages[index];
+              const imgNoOrigin = img.split("?")[0].match(domainPattern);
+              if (imgNoOrigin) {
+                const dest = imgNoOrigin[1].replace(/\./g, "").replace(/\:/g, "").replace(/\//g, "") + imgNoOrigin[2].replace(/\//g, "")
+                await sleep(3000)
+                await downloadImage(img, `${chapterDir}/${dest}`)
+              }
             } catch (error) {
               console.log(error);
             }
@@ -195,9 +196,6 @@ date: "2019-06-23"
 
 const clearDocs = function () {
   rimraf.sync(path.resolve(process.cwd(), "ssrc/*"), {
-    glob: true,
-  });
-  rimraf.sync(path.resolve(process.cwd(), "public/images/**/*"), {
     glob: true,
   });
 };

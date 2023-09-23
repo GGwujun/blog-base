@@ -11,7 +11,7 @@ const bookNavs = books.map((res) => ({
 
 const CUSTOM_DOC_ROOT_PATH = path.resolve(process.cwd(), "src");
 
-const categoryMap={
+const categoryMap = {
 }
 
 
@@ -60,7 +60,7 @@ const category = {
 
 
 
-const createcategory = function (title,slug) {
+const createcategory = function (title, slug) {
   return fetch("http://116.62.158.254:8090/apis/content.halo.run/v1alpha1/categories", {
     method: "POST",
     headers: {
@@ -69,25 +69,25 @@ const createcategory = function (title,slug) {
       "X-XSRF-TOKEN": "ddc891e9-4a85-405c-b4bb-22efa0175769",
       Cookie: "_ga=GA1.1.1137932048.1678542836; SESSION=23af4261-f771-4148-b207-2ec03473a2b4; XSRF-TOKEN=ddc891e9-4a85-405c-b4bb-22efa0175769"
     },
-    body:JSON.stringify({
+    body: JSON.stringify({
       "spec": {
         children: [],
-          "displayName": title,
-          "slug": slug,
-          "color": "#ffffff",
-          "cover": "",
-          description: title,
-          priority: 0,
-          template: ""
+        "displayName": title,
+        "slug": slug,
+        "color": "#ffffff",
+        "cover": "",
+        description: title,
+        priority: 0,
+        template: ""
       },
       "apiVersion": "content.halo.run/v1alpha1",
       "kind": "Category",
       "metadata": {
-          "name": "",
-          "generateName": "category-",
-          "annotations": {}
+        "name": "",
+        "generateName": "category-",
+        "annotations": {}
       }
-  })
+    })
   })
 
     .then((res) => {
@@ -118,14 +118,16 @@ const getCategories = function () {
 };
 
 const getNav = function (nav) {
-  return Object.keys(nav).map((cla) => ({
-    title: nav[cla].title,
-    children: nav[cla].data.map((book) => ({
-      title: book.title,
-      path: `/${book.title}`,
-    })),
-    slug:cla
-  }));
+  return Object.keys(nav).map((cla) => {
+    return nav[cla].data && nav[cla].data.length && {
+      title: nav[cla].title,
+      children: nav[cla].data.map((book) => ({
+        title: book.title,
+        path: `/${book.title}`,
+      })),
+      slug: cla
+    }
+  }).filter(Boolean);
 };
 
 exports.getBookNavs = function () {
