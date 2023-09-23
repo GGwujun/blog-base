@@ -861,7 +861,7 @@ var applyImageRule = function applyImageRule(service) {
       var titlePart = title ? ' "' + title + '"' : "";
       var domainPattern = /^(https?:\/\/[^/]+)(.*)$/;
       const imgNoOrigin = src.split("?")[0].match(domainPattern);
-      const dest = imgNoOrigin[2].replace(/\//g, "")
+      const dest = imgNoOrigin[1].replace(/\./g, "").replace(/\:/g, "").replace(/\//g, "") + imgNoOrigin[2].replace(/\//g, "")
       const destSrc = `${options.assetsPublicPath}/${dest}`
       return src ? "![" + alt + "]" + "(" + destSrc + titlePart + ")" : "";
     },
