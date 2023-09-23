@@ -15,10 +15,11 @@ export default defineConfig({
       }),
 
   logo: "/logo.png",
-  base: isVercel ? "/" : "/blog-base",
-  publicPath: isVercel ? "/" : "/blog-base/",
+  base: "/blog-base",
+  publicPath: "/blog-base/",
   favicon: "/logo.png",
   mode: "site",
+  runtimePublicPath: true,
   title: "大师兄",
   locales: [["zh-CN", "中文"]],
   resolve: {
