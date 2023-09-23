@@ -1,0 +1,14 @@
+node_modules
+.umi
+.umi-production
+
+docsone
+docszero
+docstwo
+docsthree
+docsfour
+/dist
+
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production

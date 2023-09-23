@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "1.0.1",
+  "description": "https://github.com/GGwujun/blog.git",
+  "main": "index.js",
+  "repository": "https://github.com/GGwujun/blog.git",
+  "author": "dsx <876337269@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "generator": "node  --max_old_space_size=102400 ./scripts/generator.js",
+    "build": "cross-env CTYPE=frontend dumi build",
+    "dev": "cross-env CTYPE=frontend dumi dev"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@umijs/utils": "^3.5.17",
+    "chalk": "^4.1.2",
+    "cross-env": "^7.0.3",
+    "dumi": "^1",
+    "glob": "^7.1.7",
+    "node-fetch": "2",
+    "rimraf": "^3.0.2",
+    "transliteration": "^2.2.0",
+    "umi-plugin-hire": "^1.0.3",
+    "request":"^2.88.2"
+  }
+}

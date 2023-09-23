@@ -1,0 +1,41 @@
+{
+  "name": "sitdown",
+  "version": "1.1.7",
+  "description": "Convert HTML into Markdown with JavaScript.Support GitHub Flavored Markdown Spec.Also support almost wechat/zhihu/csdn/juejin HTML.",
+  "author": "LinFeng1997 <244732635@qq.com>",
+  "module": "./dist/src.esm.js",
+  "homepage": "https://github.com/mdnice/sitdown#readme",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": ".dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdnice/sitdown.git"
+  },
+  "scripts": {
+    "start": "tsdx watch --name src",
+    "build": "tsdx build --name src",
+    "test": "tsdx test",
+    "test:debug": "node --inspect ../../node_modules/.bin/tsdx test --runInBand",
+    "lint": "tsdx lint src --fix",
+    "patch": "npm run build && npm version patch && npm publish",
+    "minor": "npm run build && npm version minor && npm publish",
+    "major": "npm run build && npm version major && npm publish"
+  },
+  "bugs": {
+    "url": "https://github.com/mdnice/sitdown/issues"
+  },
+  "browser": {
+    "jsdom": false
+  },
+  "dependencies": {
+    "jsdom": "^11.9.0"
+  },
+  "gitHead": "ca200d2940d38e15d809a4a879982027f520b4ab"
+}

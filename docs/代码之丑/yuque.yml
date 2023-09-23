@@ -1,0 +1,6 @@
+
+  # 配置请参考：https://www.yuque.com/waquehq/docs/configuration
+  repo: 'dashixiong-xacfr/nd09a9'
+  pattern: '**/*.md'
+  promote: false
+  
