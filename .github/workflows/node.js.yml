@@ -21,10 +21,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: 2. install dep
         run: |
-          rm -rf node_modules
-          yarn install
+          # rm -rf node_modules
+          # yarn install
           # yarn run generator
-          yarn run build
+          # yarn run build
         env:
           CI: true
 
@@ -34,5 +34,5 @@ jobs:
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./dist
         run: |
-          chmod +x ./scripts/deploy.sh
-          bash ./scripts/deploy.sh
+          # chmod +x ./scripts/deploy.sh
+          # bash ./scripts/deploy.sh

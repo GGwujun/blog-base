@@ -23,7 +23,7 @@ export default defineConfig({
   title: "大师兄",
   locales: [["zh-CN", "中文"]],
   resolve: {
-    includes: ["./src", "./docs"],
+    includes: ["./src", "./ssrc"],
     previewLangs: [],
   },
   navs: [...getBookNavs(process.env.PAGE)],
@@ -31,6 +31,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: "none",
   },
+  outputPath:'docs',
   exportStatic: {},
   analytics: isDev
     ? false

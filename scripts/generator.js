@@ -58,7 +58,7 @@ const getList = function (index) {
 };
 
 const createDocDir = function (book) {
-  const DocDir = `docs`;
+  const DocDir = `ssrc`;
   if (!fs.existsSync(DocDir)) {
     fs.mkdirSync(DocDir);
   }
@@ -74,7 +74,7 @@ const createDocDir = function (book) {
 };
 
 const createRepoDir = function (book) {
-  const repoDir = `docs/${book.title}`;
+  const repoDir = `ssrc/${book.title}`;
   const imageDir = `public/images/${book.title}`;
 
   if (!fs.existsSync(repoDir)) {
@@ -87,7 +87,7 @@ const createRepoDir = function (book) {
 };
 
 const createConfig = function (book) {
-  const waqueConfigName = `docs/${rmTrin(book.title)}/yuque.yml`;
+  const waqueConfigName = `ssrc/${rmTrin(book.title)}/yuque.yml`;
 
   const waqueConfig = `
   # 配置请参考：https://www.yuque.com/waquehq/docs/configuration
@@ -100,8 +100,8 @@ const createConfig = function (book) {
 };
 
 const createSummary = function (book) {
-  const summaryDir = `docs/${book.title}/summary.md`;
-  const indexDir = `docs/${book.title}/index.md`;
+  const summaryDir = `ssrc/${book.title}/summary.md`;
+  const indexDir = `ssrc/${book.title}/index.md`;
 
   let summaryData = `# ${book.title}\n`;
   book.data.forEach((chapter, index) => {
@@ -132,7 +132,7 @@ const createSummary = function (book) {
 };
 
 const createDocs = async function (book) {
-  const bookDir = `docs/${book.title}`;
+  const bookDir = `ssrc/${book.title}`;
   const imageDir = `public/images/${book.title}`;
   logger.log(chalk.green(`create book: ${book.title}`));
 
@@ -204,7 +204,7 @@ date: "2019-06-23"
 };
 
 const clearDocs = function () {
-  rimraf.sync(path.resolve(process.cwd(), "docs/*"), {
+  rimraf.sync(path.resolve(process.cwd(), "ssrc/*"), {
     glob: true,
   });
   rimraf.sync(path.resolve(process.cwd(), "public/images/*"), {
