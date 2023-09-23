@@ -136,7 +136,7 @@ const createDocs = async function (book) {
     if (!chapter.chapterTitle) {
       const articleDir = `${bookDir}/${rmTrin(chapter.article_title)}`;
       var sitdown = new Sitdown({
-        assetsPublicPath: `/images`
+        assetsPublicPath: `.`
       });
       logger.log(chalk.white(`  create book article:${chapter.article_title}`));
       const mdContent = `---
@@ -162,7 +162,7 @@ date: "2019-06-23"
           chalk.white(`    create book article:${article.article_title}`)
         );
         var sitdown = new Sitdown({
-          assetsPublicPath: `/images`
+          assetsPublicPath: `.`
         });
         const mdContent = `---
 date: "2019-06-23"
@@ -177,7 +177,7 @@ date: "2019-06-23"
             const imgNoOrigin = img.split("?")[0].match(domainPattern);
             const dest = imgNoOrigin[1].replace(/\./g, "").replace(/\:/g, "").replace(/\//g, "") + imgNoOrigin[2].replace(/\//g, "")
             try {
-              await downloadImage(img, `${imageDir}/${dest}`)
+              await downloadImage(img, `${chapterDir}/${dest}`)
             } catch (error) {
               console.log(error);
             }
